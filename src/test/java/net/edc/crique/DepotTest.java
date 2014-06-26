@@ -18,10 +18,8 @@ public class DepotTest {
     @Test
     public void testConfig() throws Exception {
         String config = System.getProperty("config");
-        File conf = new File(config);
         Assert.assertTrue( conf.exists() && conf.canRead() );
-        FileInputStream fis = new FileInputStream( conf );
-        Depot depot = DepotFactory.getInstance( fis );
+        Depot depot = DepotFactory.getInstance( config );
         depot.init();
         byte[] content = depot.getContent("notes");
         Assert.assertNotNull( content );

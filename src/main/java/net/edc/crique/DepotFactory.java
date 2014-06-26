@@ -2,11 +2,19 @@ package net.edc.crique;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.File;
+import java.io.FileInputStream;
 
 import org.apache.commons.digester.Digester;
 import org.xml.sax.SAXException;
 
 public class DepotFactory {
+
+    public static Depot getInstance(String config) throws Exception {
+        File file = new File(config);
+        FileInputStream fis = new FileInputStream(file);
+        return getInstance(fis);
+    }
 
     public static Depot getInstance(InputStream is) throws Exception {
         DepotConfig depotConfig = parse( is );

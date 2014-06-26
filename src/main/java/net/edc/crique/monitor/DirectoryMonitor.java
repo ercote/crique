@@ -1,4 +1,4 @@
-package com.lq.monitor;
+package net.edc.crique.monitor;
 
 import java.io.File;
 import java.io.FileFilter;
