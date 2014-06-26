@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<depotConfig src="/Users/edc/Dropbox/Documents">
+  <!--
+    OPTIONAL
+   <selector>net.edc.crique.LastResultsSelector</selector>
+   <listener>net.edc.crique.LastResultsListener</listener>
+-->
+  <monitoringInterval>60</monitoringInterval>
+  <live>false</live>
+  <files>
+    <file key="notes" path="Notes.txt"/>
+    <file key="text" path="*.txt"/>
+  </files>
+</depotConfig>
