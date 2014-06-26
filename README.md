@@ -21,7 +21,7 @@ depot.init();
 À partir du dépôt, pour accéder au contenu brut d'un fichier, utiliser la clé spécifiée:
 ``` java
 byte[] content = depot.getContent("notes");
-``
+```
 
 Si un _wildcard_ est présent dans le _path_ du fichier, le premier paramètre est la clé et le deuxième représente la valeur à insérer à la position du _wildcard_:
 ``` java
@@ -69,7 +69,8 @@ Exemple de configuration:
 
 ```
 
-L'élément _live_ indique au dépôt de vérifier le fichier concerné à chaque demande de contenu/objet. Si le fichier est modifié depuis le dernier accès, il sera mis à jour dans le dépôt. Pratique pour les phases de développement afin de ne pas être ralenti par l'intervale de vérification. Ne pas utiliser un dépôt _live_ dans un environnement de production.
+L'élément _live_ indique au dépôt de vérifier le fichier concerné à chaque demande de contenu/objet. Si le fichier est modifié depuis le dernier accès, il sera mis à jour dans le dépôt. Pratique pour les phases de développement afin de ne pas être ralenti par l'intervale de vérification.
+**Ne pas utiliser un dépôt _live_ dans un environnement de production.**
 
 L'élément _selector_ permet de sélectionner programmatiquement les fichiers à monitorer sous le répertoire source. La classe du sélecteur doit découler de l'interface _net.edc.crique.monitor.DirectorySelector_.
 
