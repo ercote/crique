@@ -1,8 +1,10 @@
 # Crique
 
-Crique permet de monitorer le contenu d'un répertoire.
+Crique permet de monitorer et conserver en cache le contenu d'un répertoire source.
 
-Chaque fichier monitoré sous ce répertoire doit être déclaré dans la configuration.
+Les vérifications du répertoire s'effectuent à intervales réguliers.
+
+Chaque fichier monitoré sous ce répertoire doit être déclaré dans la configuration (_white list_).
 
 Une clé est associée à chaque fichier, qui sera utilisée pour accéder à son contenu/objet.
 
@@ -36,9 +38,9 @@ XmlData data = (XmlData)depot.getObject("xml", "firstQuarter");
 
 ## Configuration
 
-La configuration doit se faire sous le format XML.
+La configuration se fait sous le format XML.
 
-Il est possible de spécifier une classe _parser_ à appeler lorsqu'un changement (ajout ou modification) est détecté sur un fichier. Dans ce cas, l'objet retourné par le _parser_ sera conservé dans le dépôt. Sinon, le contenu brut du fichier sera conservé.
+Il est possible de spécifier une classe _parser_ à appeler lorsqu'un changement (ajout ou modification) est détecté sur un fichier. Dans ce cas, l'objet retourné par le _parser_ sera conservé dans le dépôt. Sinon, le contenu brut du fichier est caché.
 
 Dans le chemin du fichier, il est possible d'utiliser un _wildcard_, qui permettra de référencer plusieurs fichiers dans la même entrée d'une configuration.
 
@@ -46,6 +48,7 @@ Exemple de configuration:
 ``` xml
 
 <?xml version="1.0" encoding="utf-8"?>
+<!-- répertoire racine -->
 <depotConfig src="/Users/ercote/Dropbox/Documents">
    <!-- OPTIONNELS
 
@@ -69,7 +72,7 @@ Exemple de configuration:
 
 ```
 
-L'élément _live_ indique au dépôt de vérifier le fichier concerné à chaque demande de contenu/objet. Si le fichier est modifié depuis le dernier accès, il sera mis à jour dans le dépôt. Pratique pour les phases de développement afin de ne pas être ralenti par l'intervale de vérification.
+L'élément _live_ indique au dépôt de vérifier le fichier ciblé à chaque demande de contenu/objet. Si le fichier est modifié depuis le dernier accès, il sera mis à jour dans le dépôt. Utile pour les phases de développement afin de ne pas être ralenti par l'intervale de vérification.
 **Ne pas utiliser un dépôt _live_ dans un environnement de production.**
 
 L'élément _selector_ permet de sélectionner programmatiquement les fichiers à monitorer sous le répertoire source. La classe du sélecteur doit découler de l'interface _net.edc.crique.monitor.DirectorySelector_.
@@ -79,8 +82,6 @@ La classe du _listener_ doit découler de l'interface _net.edc.crique.monitor.Di
 
 ## À faire
 
-* Ménage des classes inutilisées
 * Documentation en anglais
 * Mettre à jour le monitoring afin d'utiliser les dernières avancées Java (java.nio.file)
-* Documentation des classes
-* Meilleure façon de créer des scénarions de tests JUnit?
+* Scénarios de tests JUnit
